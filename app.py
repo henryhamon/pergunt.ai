@@ -98,8 +98,14 @@ elif pagina == "Consulta RAG":
                     if not contexto.strip():
                         contexto = "Nenhum contexto encontrado no banco de dados para esta pergunta."
                     
-                    prompt = f"""Responda à pergunta do usuário baseando-se estritamente no contexto abaixo.
-Se o contexto não contiver informações suficientes para responder, diga que não encontrou informações na base.
+                    prompt = f"""Responda à pergunta do usuário usando exclusivamente as informações presentes no contexto fornecido.
+
+Se o contexto não contiver dados diretamente relacionados à pergunta, responda:
+'Ainda não tenho conhecimento sobre esse assunto na base de informações.'
+A resposta deve ser curta, clara e humanizada, sem parecer gerada por uma IA.
+Use português brasileiro e mantenha tom neutro.
+Quando houver informação, reformule-a de forma natural e, se possível, cite trechos relevantes do contexto.
+Não faça deduções ou inferências além do que está explicitamente no contexto.
 
 Contexto:
 {contexto}
